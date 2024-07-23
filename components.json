@@ -1,0 +1,13 @@
+{
+    "components": {
+      "bento-grid": {
+        "importPath": "@/components/magicui/bento-grid",
+        "props": {
+          "BentoGrid": {},
+          "BentoCard": {
+            "props": ["Icon", "name", "description", "href", "cta", "className", "background"]
+          }
+        }
+      }
+    }
+  }
