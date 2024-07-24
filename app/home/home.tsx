@@ -10,13 +10,6 @@ export default function HomePage() {
       link: 'https://github.com/username/project1',
       imageUrl: '/path/to/image1.jpg',
     },
-    {
-      title: 'Project 2',
-      description: 'Description for Project 2',
-      link: 'https://github.com/username/project2',
-      imageUrl: '/path/to/image2.jpg',
-    },
-    // Agrega más proyectos aquí
   ];
 
   return (

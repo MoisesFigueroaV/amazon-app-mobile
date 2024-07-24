@@ -1,4 +1,3 @@
-// app/components/magicui/bento-grid/BentoGrid.tsx
 import React from 'react';
 
 interface BentoGridProps {

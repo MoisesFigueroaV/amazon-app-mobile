@@ -1,22 +1,20 @@
-// app/components/magicui/bento-grid/BentoCard.tsx
 import React from 'react';
 
 interface BentoCardProps {
   title: string;
   description: string;
-  link: string;
-  imageUrl: string;
+  link?: string; // Hacer opcional si no se necesita un enlace
+  imageUrl?: string; // Hacer opcional si no se necesita una imagen
 }
 
 const BentoCard: React.FC<BentoCardProps> = ({ title, description, link, imageUrl }) => {
   return (
-    <a href={link} className="block overflow-hidden rounded-lg shadow-lg">
-      <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="mt-2 text-gray-600">{description}</p>
-      </div>
-    </a>
+    <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+      {imageUrl && <img src={imageUrl} alt={title} className="w-full h-40 object-cover rounded-md" />}
+      <h2 className="text-lg font-semibold mt-2">{title}</h2>
+      <p className="text-gray-600 mt-1">{description}</p>
+      {link && <a href={link} className="text-blue-500 mt-2 block">Learn more</a>}
+    </div>
   );
 };
 
