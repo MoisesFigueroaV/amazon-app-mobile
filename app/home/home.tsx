@@ -1,6 +1,6 @@
 // app/page.tsx
-import BentoGrid from './components/magicui/bento-grid/BentoGrid';
-import BentoCard from './components/magicui/bento-grid/BentoCard';
+import BentoGrid from '../components/magicui/bento-grid/BentoGrid';
+import BentoCard from '../components/magicui/bento-grid/BentoCard';
 
 export default function HomePage() {
   const projects = [
