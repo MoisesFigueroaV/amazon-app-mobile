@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import BentoCard from './components/magicui/bento-grid/BentoCard';
 import BentoGrid from './components/magicui/bento-grid/BentoGrid';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode } from 'react-icons/fa';
 
 interface Project {
   title: string;
@@ -15,11 +16,20 @@ interface Section {
   id: string;
   title: string;
   description: string;
+  icons?: React.ReactNode;
 }
 
 const sections: Section[] = [
-  { id: 'about-me', title: 'About Me', description: 'A brief introduction about me.' },
-  { id: 'skills', title: 'Skills', description: 'My technical skills and expertise.' },
+  { id: 'about-me', title: 'About Me', description: 'Mi nombre es Moises Figueroa, tengo 26 años y soy estudiante de ingeniería en informática.' },
+  { id: 'skills', title: 'Skills', description: 'My technical skills and expertise.', icons: (
+    <>
+      <FaHtml5 className="text-3xl text-red-600" />
+      <FaCss3Alt className="text-3xl text-blue-600" />
+      <FaJs className="text-3xl text-yellow-500" />
+      <FaReact className="text-3xl text-blue-400" />
+      <FaNode className="text-3xl text-green-600" />
+    </>
+  ) },
   { id: 'projects', title: 'Projects', description: 'Projects I have worked on.' },
   { id: 'articles', title: 'Articles', description: 'Articles I have written.' },
   { id: 'notes', title: 'Notes', description: 'Notes and important points.' },
@@ -45,8 +55,8 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <header className="mb-8">Hi, Im Moises Figueroa</header>
+    <div className="home-page">
+      <header className="header">Hi, Im Moises Figueroa</header>
 
       <BentoGrid>
         {sections.map(section => (
@@ -55,12 +65,13 @@ const HomePage: React.FC = () => {
             title={section.title}
             description={section.description}
             link={`#${section.id}`}
+            icons={section.icons}
           />
         ))}
       </BentoGrid>
 
-      <div id="projects" className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Projects</h2>
+      <div id="projects" className="projects-section">
+        <h2 className="section-title">Projects</h2>
         <BentoGrid>
           {projects.map((project, index) => (
             <BentoCard
@@ -76,38 +87,34 @@ const HomePage: React.FC = () => {
       </div>
 
       {selectedProject && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg max-w-lg w-full">
-            <h3 className="text-2xl font-bold mb-4">{selectedProject.title}</h3>
-            <img src={selectedProject.imageUrl} alt={selectedProject.title} className="mb-4" />
-            <p className="mb-4">{selectedProject.description}</p>
-            <a href={selectedProject.link} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3 className="modal-title">{selectedProject.title}</h3>
+            <img src={selectedProject.imageUrl} alt={selectedProject.title} className="modal-image" />
+            <p className="modal-description">{selectedProject.description}</p>
+            <a href={selectedProject.link} className="modal-link" target="_blank" rel="noopener noreferrer">
               View Repository
             </a>
-            <button onClick={handleCloseModal} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+            <button onClick={handleCloseModal} className="modal-close-button">
               Close
             </button>
           </div>
         </div>
       )}
 
-      <div id="articles" className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Articles</h2>
+      <div id="articles" className="articles-section">
+        <h2 className="section-title">Articles</h2>
         <p>Articles I have written.</p>
       </div>
 
-      <div id="notes" className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Notes</h2>
+      <div id="notes" className="notes-section">
+        <h2 className="section-title">Notes</h2>
         <p>Notes and important points.</p>
       </div>
 
-      <div id="blog" className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Blog</h2>
+      <div id="blog" className="blog-section">
+        <h2 className="section-title">Blog</h2>
         <p>My blog posts and updates.</p>
-      </div>
-
-      <div className="text-center mt-8">
-        <a href="#top" className="text-blue-500 hover:underline">Back to top</a>
       </div>
     </div>
   );
