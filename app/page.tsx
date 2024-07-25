@@ -1,7 +1,23 @@
+"use client";
+
+import React, { useState } from 'react';
 import BentoCard from './components/magicui/bento-grid/BentoCard';
 import BentoGrid from './components/magicui/bento-grid/BentoGrid';
 
-const sections = [
+interface Project {
+  title: string;
+  description: string;
+  link: string;
+  imageUrl: string;
+}
+
+interface Section {
+  id: string;
+  title: string;
+  description: string;
+}
+
+const sections: Section[] = [
   { id: 'about-me', title: 'About Me', description: 'A brief introduction about me.' },
   { id: 'skills', title: 'Skills', description: 'My technical skills and expertise.' },
   { id: 'projects', title: 'Projects', description: 'Projects I have worked on.' },
@@ -11,16 +27,26 @@ const sections = [
   { id: 'blog', title: 'Blog', description: 'My blog posts and updates.' },
 ];
 
-const projects = [
+const projects: Project[] = [
   { title: 'Project 1', description: 'Description of Project 1', link: 'https://github.com/username/project1', imageUrl: '/path/to/image1.jpg' },
   { title: 'Project 2', description: 'Description of Project 2', link: 'https://github.com/username/project2', imageUrl: '/path/to/image2.jpg' },
   // More projects
 ];
 
-export default function HomePage() {
+const HomePage: React.FC = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const handleOpenModal = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
+
   return (
     <div className="p-4">
-      <header>Hi, Im Moises Figueroa</header>
+      <header className="mb-8">Hi, Im Moises Figueroa</header>
 
       <BentoGrid>
         {sections.map(section => (
@@ -43,10 +69,27 @@ export default function HomePage() {
               description={project.description}
               link={project.link}
               imageUrl={project.imageUrl}
+              onClick={() => handleOpenModal(project)}
             />
           ))}
         </BentoGrid>
       </div>
+
+      {selectedProject && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg max-w-lg w-full">
+            <h3 className="text-2xl font-bold mb-4">{selectedProject.title}</h3>
+            <img src={selectedProject.imageUrl} alt={selectedProject.title} className="mb-4" />
+            <p className="mb-4">{selectedProject.description}</p>
+            <a href={selectedProject.link} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">
+              View Repository
+            </a>
+            <button onClick={handleCloseModal} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       <div id="articles" className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Articles</h2>
@@ -68,4 +111,6 @@ export default function HomePage() {
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;

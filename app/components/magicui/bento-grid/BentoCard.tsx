@@ -3,13 +3,14 @@ import React from 'react';
 interface BentoCardProps {
   title: string;
   description: string;
-  link?: string; // Hacer opcional si no se necesita un enlace
-  imageUrl?: string; // Hacer opcional si no se necesita una imagen
+  link?: string;
+  imageUrl?: string;
+  onClick?: () => void;
 }
 
-const BentoCard: React.FC<BentoCardProps> = ({ title, description, link, imageUrl }) => {
+const BentoCard: React.FC<BentoCardProps> = ({ title, description, link, imageUrl, onClick }) => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+    <div onClick={onClick} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
       {imageUrl && <img src={imageUrl} alt={title} className="w-full h-40 object-cover rounded-md" />}
       <h2 className="text-lg font-semibold mt-2">{title}</h2>
       <p className="text-gray-600 mt-1">{description}</p>
