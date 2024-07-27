@@ -17,24 +17,23 @@ interface Section {
   title: string;
   description: string;
   icons?: React.ReactNode;
+  className?: string;
 }
 
 const sections: Section[] = [
-  { id: 'about-me', title: 'About Me', description: 'Mi nombre es Moises Figueroa, tengo 26 años y soy estudiante de ingeniería en informática.' },
+  { id: 'about-me', title: 'About Me', description: 'Mi nombre es Moises Figueroa, tengo 26 años y soy estudiante de ingeniería en informática.', className: 'box-aboutme' },
   { id: 'skills', title: 'Skills', description: 'My technical skills and expertise.', icons: (
-    <>
-      <FaHtml5 className="text-3xl text-red-600" />
-      <FaCss3Alt className="text-3xl text-blue-600" />
-      <FaJs className="text-3xl text-yellow-500" />
-      <FaReact className="text-3xl text-blue-400" />
-      <FaNode className="text-3xl text-green-600" />
-    </>
-  ) },
-  { id: 'projects', title: 'Projects', description: 'Projects I have worked on.' },
-  { id: 'articles', title: 'Articles', description: 'Articles I have written.' },
-  { id: 'notes', title: 'Notes', description: 'Notes and important points.' },
-  { id: 'contacts', title: 'Contacts', description: 'How to get in touch with me.' },
-  { id: 'blog', title: 'Blog', description: 'My blog posts and updates.' },
+    <div className="icons">
+      <FaHtml5 className="text-3xl text-white" />
+      <FaCss3Alt className="text-3xl text-white" />
+      <FaJs className="text-3xl text-white" />
+      <FaReact className="text-3xl text-white" />
+      <FaNode className="text-3xl text-white" />
+    </div>
+  ), className: 'box-skills' },
+  { id: 'projects', title: 'Projects', description: 'Projects I have worked on.', className: 'box-projects' },
+  { id: 'articles', title: 'Articles', description: 'Articles I have written.', className: 'box-articles' },
+  { id: 'contacts', title: 'Contacts', description: 'How to get in touch with me.', className: 'box-contacts' },
 ];
 
 const projects: Project[] = [
@@ -58,17 +57,20 @@ const HomePage: React.FC = () => {
     <div className="home-page">
       <header className="header">Hi, Im Moises Figueroa</header>
 
-      <BentoGrid>
-        {sections.map(section => (
-          <BentoCard
-            key={section.id}
-            title={section.title}
-            description={section.description}
-            link={`#${section.id}`}
-            icons={section.icons}
-          />
-        ))}
-      </BentoGrid>
+      <div className="bento-box">
+        <BentoGrid>
+          {sections.map(section => (
+            <BentoCard
+              key={section.id}
+              title={section.title}
+              description={section.description}
+              link={`#${section.id}`}
+              className={`box ${section.className}`}  // Añadir clase específica para manejar tamaños
+              icons={section.icons}
+            />
+          ))}
+        </BentoGrid>
+      </div>
 
       <div id="projects" className="projects-section">
         <h2 className="section-title">Projects</h2>
@@ -81,6 +83,7 @@ const HomePage: React.FC = () => {
               link={project.link}
               imageUrl={project.imageUrl}
               onClick={() => handleOpenModal(project)}
+              className="box small-box"  // Añadir clase personalizada aquí
             />
           ))}
         </BentoGrid>
@@ -107,15 +110,9 @@ const HomePage: React.FC = () => {
         <p>Articles I have written.</p>
       </div>
 
-      <div id="notes" className="notes-section">
-        <h2 className="section-title">Notes</h2>
-        <p>Notes and important points.</p>
-      </div>
-
-      <div id="blog" className="blog-section">
-        <h2 className="section-title">Blog</h2>
-        <p>My blog posts and updates.</p>
-      </div>
+      <footer className="footer">
+        &copy; 2024 Moises Figueroa. All rights reserved.
+      </footer>
     </div>
   );
 };

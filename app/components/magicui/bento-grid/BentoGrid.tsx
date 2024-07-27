@@ -1,12 +1,9 @@
+// BentoGrid.tsx
 import React from 'react';
 
-interface BentoGridProps {
-  children: React.ReactNode;
-}
-
-const BentoGrid: React.FC<BentoGridProps> = ({ children }) => {
+const BentoGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-4 gap-4"> {/* Puedes ajustar grid-cols para tener más o menos columnas */}
       {children}
     </div>
   );
