@@ -1,16 +1,15 @@
 import Head from 'next/head';
-import Header from './components/header';
-import Section from './components/section';
-import ProjectCard from './components/projectCard';
-import ArticleCard from './components/articleCard';
-import Footer from './components/footer';
+import Header from '../components/header';
+import Section from '../components/section';
+import Footer from '../components/footer';
+import ProjectCard from '../components/projectCard';
+import ArticleCard from '../components/articleCard';
 
-export default function Page() {
+export default function Home() {
   return (
     <div>
       <Head>
         <title>Mi Portafolio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Header />
