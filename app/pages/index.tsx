@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import Header from '../components/header';
 import ArticleCard from '../components/articleCard';
+import ProjectCard from '../components/projectCard';
 import Section from '../components/section';
 import Footer from '../components/footer';
 import Tabs from '../components/tabs'; 
 import { Project } from '../components/types'; 
+
 
 const projects: Project[] = [
   {

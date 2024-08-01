@@ -63,6 +63,12 @@ export default function Home() {
             description="Descripción del proyecto..."
             url="https://github.com/mi-proyecto"
           />
+           <ProjectCard
+            type="Mobile App"
+            name="Project 3"
+            description="Descripción del proyecto..."
+            url="https://github.com/mi-proyecto"
+          />
         </Section>
         <Section id="articles" title="Articles">
           <ArticleCard title="Artículo 1" description="Descripción del artículo..." />

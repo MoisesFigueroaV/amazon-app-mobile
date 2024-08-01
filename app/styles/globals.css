@@ -1,4 +1,6 @@
 /* General reset and box-sizing */
+
+/* Importa la fuente desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -9,29 +11,74 @@
 
 body {
   font-family: 'Fira Code', monospace;
-  background-color: var(--background-color, white);
-  color: var(--text-color, black);
+  background-color: #fffff0;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Transición suave */
 }
 
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 800px; /* Hacer más angosto */
   padding: 2rem;
 }
 
+/*Fuentes y tipografia*/
+
+/*header*/
+.tittle-present{
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.tittle-location {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/*About Me*/
+#about-me {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.about-description {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/*Skills*/
+#skills {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+
+/*Elemento Header*/
 .header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Alineación a la izquierda */
   align-items: center;
   padding: 2rem;
-  border-bottom: 2px solid var(--text-color, black);
-  width: 100%;
-  background-color: transparent;
+  border-bottom: 2px solid black;
+  width: 100%; /* Ancho completo del contenedor */
+  background-color: transparent; /* Sin caja visible */
+  transition: border-color 0.5s ease, background-color 0.5s ease; /* Transición suave */
 }
 
 .profile {
@@ -43,9 +90,10 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: white;
+  background-color: #fffff0;
   margin-right: 1rem;
-  border: 2px solid var(--text-color, black);
+  border: 2px solid black;
+  transition: border-color 0.5s ease; /* Transición suave */
 }
 
 .profile-info {
@@ -54,7 +102,7 @@ body {
 
 .main-content {
   padding: 2rem;
-  width: 100%;
+  width: 100%; /* Ancho completo del contenedor */
 }
 
 .section {
@@ -63,20 +111,22 @@ body {
   position: relative;
   border: none;
   background-color: transparent;
-  width: 100%;
+  width: 100%; /* Ancho completo del contenedor */
+  transition: background-color 0.5s ease, border-color 0.5s ease; /* Transición suave */
 }
 
 .project-card {
-  background-color: #ffffff;
+  background-color: #fffff0;
   padding: 1rem;
   margin: 0.5rem 0;
   border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   position: relative;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transición suave */
 }
 
 .project-card:hover {
-  background-color: #f5f5f5;
+  background-color: #fffff0;
 }
 
 .article-card {
@@ -86,6 +136,7 @@ body {
   position: relative;
   border: none;
   background-color: transparent;
+  transition: background-color 0.5s ease, border-color 0.5s ease; /* Transición suave */
 }
 
 .footer {
@@ -94,7 +145,8 @@ body {
   background-color: transparent;
   border-radius: 0;
   border-top: none;
-  width: 100%;
+  width: 100%; /* Ancho completo del contenedor */
+  transition: border-color 0.5s ease, background-color 0.5s ease; /* Transición suave */
 }
 
 .footer .social-icons {
@@ -105,7 +157,75 @@ body {
 }
 
 .icon-location, .social-icons svg {
-  color: var(--text-color, black);
+  color: black;
+  transition: color 0.5s ease; /* Transición suave */
+}
+
+/* Estilo para el botón de cambio de modo */
+.toggle-dark-mode {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Transición suave */
+}
+
+.toggle-dark-mode:hover {
+  background-color: #333;
+}
+
+.toggle-dark-mode.dark-mode {
+  color: black;
+  background-color: white;
+}
+
+.toggle-dark-mode.dark-mode:hover {
+  background-color: #f5f5f5;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
+}
+
+body.dark-mode .header {
+  border-bottom: 2px solid #e0e0e0; /* Línea inferior visible en modo oscuro */
+}
+
+body.dark-mode .footer, 
+body.dark-mode .section,
+body.dark-mode .project-card,
+body.dark-mode .article-card {
+  background-color: transparent; /* Sin fondo visible */
+  border: none; /* Sin borde */
+  box-shadow: none; /* Sin sombra */
+}
+
+body.dark-mode .project-card,
+body.dark-mode .article-card {
+  box-shadow: none; /* Sin sombra */
+}
+
+body.dark-mode .profile-picture {
+  border: none; /* Sin borde en la foto de perfil */
+}
+
+body.dark-mode .section {
+  border: none; /* Sin borde en secciones */
+}
+
+body.dark-mode .main-content {
+  padding: 2rem; /* Asegúrate de mantener el padding en modo oscuro */
+}
+
+body.dark-mode .footer .social-icons svg {
+  color: #e0e0e0; /* Iconos blancos en el modo oscuro */
 }
 
 /* Responsividad */
@@ -141,50 +261,4 @@ body {
   .profile-info {
     text-align: center;
   }
-}
-
-/* Modo oscuro */
-.toggle-dark-mode {
-  display: inline-block;
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: white;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.toggle-dark-mode:hover {
-  background-color: #333;
-}
-
-.toggle-dark-mode.dark-mode {
-  color: black;
-  background-color: white;
-}
-
-.toggle-dark-mode.dark-mode:hover {
-  background-color: #f5f5f5;
-}
-
-/* Estilos para el modo oscuro */
-body.dark-mode {
-  background-color: black;
-  color: white;
-}
-
-body.dark-mode {
-  --background-color: black;
-  --text-color: white;
-}
-
-body.dark-mode .project-card {
-  background-color: #333333;
-}
-
-body.dark-mode .project-card:hover {
-  background-color: #444444;
 }
