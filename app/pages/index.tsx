@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import Header from '../components/header';
-import ArticleCard from '../components/articleCard';
+import Header from '../components/Header';
+import ArticleCard from '../components/ArticleCard';
 import ProjectCard from '../components/projectCard';
 import Section from '../components/section';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import Tabs from '../components/tabs'; 
 import { Project } from '../components/types'; 
 
@@ -37,7 +37,7 @@ export default function Home() {
 
       <main className="main-content">
         <Section id="about-me" title="About Me" description="Soy Moises Figueroa, tengo 26 años y soy estudiante de ingeniería en informática." />
-        <Section id="skills" title="Skills" description="Mis tecnologías y herramientas que sé utilizar son las siguientes:" />
+        <Section id="skills" title="Skills" description="Mis tecnologías y herramientas que sé utilizar son las siguientes..." />
         <Section id="projects" title="Projects">
           <Tabs projects={projects} /> {/* Usar el componente Tabs */}
         </Section>

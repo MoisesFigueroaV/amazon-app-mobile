@@ -1,6 +1,4 @@
 /* General reset and box-sizing */
-
-/* Importa la fuente desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -18,67 +16,35 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  transition: background-color 0.5s ease, color 0.5s ease; /* Transición suave */
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Container */
 .container {
   width: 100%;
-  max-width: 800px; /* Hacer más angosto */
+  max-width: 800px;
   padding: 2rem;
 }
 
-/*Fuentes y tipografia*/
-
-/*header*/
-.tittle-present{
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.tittle-location {
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-/*About Me*/
-#about-me {
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.about-description {
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-/*Skills*/
-#skills {
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-
-
-/*Elemento Header*/
+/* Header */
 .header {
   display: flex;
-  justify-content: flex-start; /* Alineación a la izquierda */
+  justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem 2rem;
   border-bottom: 2px solid black;
-  width: 100%; /* Ancho completo del contenedor */
-  background-color: transparent; /* Sin caja visible */
-  transition: border-color 0.5s ease, background-color 0.5s ease; /* Transición suave */
+  width: 100%;
+  background-color: transparent;
+  transition: border-color 0.5s ease, background-color 0.5s ease;
+}
+
+.header.dark-mode {
+  border-bottom-color: #e0e0e0;
 }
 
 .profile {
@@ -93,78 +59,15 @@ body {
   background-color: #fffff0;
   margin-right: 1rem;
   border: 2px solid black;
-  transition: border-color 0.5s ease; /* Transición suave */
+  transition: border-color 0.5s ease;
 }
 
 .profile-info {
   text-align: left;
 }
 
-.main-content {
-  padding: 2rem;
-  width: 100%; /* Ancho completo del contenedor */
-}
-
-.section {
-  margin: 1rem 0;
-  padding: 1rem;
-  position: relative;
-  border: none;
-  background-color: transparent;
-  width: 100%; /* Ancho completo del contenedor */
-  transition: background-color 0.5s ease, border-color 0.5s ease; /* Transición suave */
-}
-
-.project-card {
-  background-color: #fffff0;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transición suave */
-}
-
-.project-card:hover {
-  background-color: #fffff0;
-}
-
-.article-card {
-  margin: 0.5rem 0;
-  border-radius: 5px;
-  box-shadow: none;
-  position: relative;
-  border: none;
-  background-color: transparent;
-  transition: background-color 0.5s ease, border-color 0.5s ease; /* Transición suave */
-}
-
-.footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: transparent;
-  border-radius: 0;
-  border-top: none;
-  width: 100%; /* Ancho completo del contenedor */
-  transition: border-color 0.5s ease, background-color 0.5s ease; /* Transición suave */
-}
-
-.footer .social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 0.5rem 0;
-}
-
-.icon-location, .social-icons svg {
-  color: black;
-  transition: color 0.5s ease; /* Transición suave */
-}
-
-/* Estilo para el botón de cambio de modo */
 .toggle-dark-mode {
-  display: inline-block;
-  margin-bottom: 1rem;
+  margin-left: auto;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   color: white;
@@ -172,7 +75,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.5s ease, color 0.5s ease; /* Transición suave */
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .toggle-dark-mode:hover {
@@ -188,77 +91,144 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Estilos para el modo oscuro */
-body.dark-mode {
-  background-color: #121212; /* Fondo oscuro */
-  color: #e0e0e0; /* Texto claro */
+/* Social Media */
+.social-media {
+  display: flex;
+  justify-content: flex-start; /* Mueve las redes sociales a la izquierda */
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
-body.dark-mode .header {
-  border-bottom: 2px solid #e0e0e0; /* Línea inferior visible en modo oscuro */
+.social-media a {
+  color: black;
+  font-size: 1.5rem;
+  transition: color 0.5s ease;
 }
 
-body.dark-mode .footer, 
-body.dark-mode .section,
-body.dark-mode .project-card,
-body.dark-mode .article-card {
-  background-color: transparent; /* Sin fondo visible */
-  border: none; /* Sin borde */
-  box-shadow: none; /* Sin sombra */
+.social-media a:hover {
+  color: #0073e6;
 }
 
-body.dark-mode .project-card,
-body.dark-mode .article-card {
-  box-shadow: none; /* Sin sombra */
+/* Main content */
+.main-content {
+  padding: 2rem 0;
+  width: 100%;
 }
 
-body.dark-mode .profile-picture {
-  border: none; /* Sin borde en la foto de perfil */
+.section {
+  margin: 2rem 0;
+  padding: 1rem;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-body.dark-mode .section {
-  border: none; /* Sin borde en secciones */
+/* Project Card */
+.project-card {
+  background-color: #fffff0;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-body.dark-mode .main-content {
-  padding: 2rem; /* Asegúrate de mantener el padding en modo oscuro */
+.project-card:hover {
+  background-color: #f5f5f5;
 }
 
-body.dark-mode .footer .social-icons svg {
-  color: #e0e0e0; /* Iconos blancos en el modo oscuro */
+/* Article Card */
+.article-card {
+  margin: 1rem 0;
+  border-radius: 5px;
+  box-shadow: none;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-/* Responsividad */
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Make sure the modal is on top */
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea el contenido a la izquierda */
+  padding: 2rem;
+  border-top: 2px solid black;
+}
+
+.footer .social-media {
+  display: flex;
+  justify-content: flex-start; /* Alinea los íconos a la izquierda */
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer .contact-info {
+  display: none; /* Elimina la sección de contacto */
+}
+
+.footer .email {
+  margin-top: 1rem;
+}
+
+.footer .email a {
+  color: black;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .toggle-dark-mode {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .social-media {
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
   .container {
     padding: 1rem;
-  }
-
-  .header, .section, .footer {
-    padding: 1rem;
-  }
-
-  .project-card, .article-card {
-    padding: 0.5rem;
-  }
-
-  .footer {
-    font-size: 0.875rem;
   }
 }
 
 @media (max-width: 480px) {
-  .profile {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .profile-picture {
-    margin-right: 0;
-    margin-bottom: 1rem;
+    width: 40px;
+    height: 40px;
   }
 
-  .profile-info {
-    text-align: center;
+  .social-media a {
+    font-size: 1.2rem;
+  }
+
+  .toggle-dark-mode {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
   }
 }

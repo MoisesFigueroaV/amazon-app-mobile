@@ -1,16 +1,33 @@
-'use client'; // Asegura que el componente sea del lado del cliente
-import { FaMapMarkerAlt } from 'react-icons/fa';
+// app/components/Header.tsx
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import DarkModeToggle from './DarkModeToggle';
 
-export default function Header() {
-  return (
-    <header className="header">
-      <div className="profile">
-        <div className="profile-picture"></div>
-        <div className="profile-info">
-          <h1 className="tittle-present">Hi! I'm Moises Figueroa</h1>
-          <p><FaMapMarkerAlt className="tittle-location" />Concepcion, Chile</p>
-        </div>
-      </div>
-    </header>
-  );
+interface HeaderProps {
+    onToggleDarkMode: () => void;
 }
+
+const Header: React.FC<HeaderProps> = ({ onToggleDarkMode }) => {
+    return (
+        <header className="header">
+            <div className="profile">
+                <img
+                    src="/path/to/profile.jpg"
+                    alt="Profile"
+                    className="profile-picture"
+                />
+                <div className="profile-info">
+                    <h1 id="header-title">Hi! I'm Moises Figueroa</h1>
+                    <div className="location">
+                        <FontAwesomeIcon icon={faMapMarkerAlt} />
+                        <span>Concepcion, Chile</span>
+                    </div>
+                </div>
+            </div>
+            <DarkModeToggle onToggleDarkMode={onToggleDarkMode} />
+        </header>
+    );
+};
+
+export default Header;

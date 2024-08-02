@@ -1,16 +1,21 @@
+// app/components/Section.tsx
+import React from 'react';
+
 interface SectionProps {
-  id: string;
-  title: string;
-  description?: string;
-  children?: React.ReactNode;
+    id: string;
+    title: string;
+    description?: string;
+    children?: React.ReactNode;
 }
 
-export default function Section({ id, title, description, children }: SectionProps) {
-  return (
-    <section id={id} className="section">
-      <h2>{title}</h2>
-      {description && <p>{description}</p>}
-      {children}
-    </section>
-  );
-}
+const Section: React.FC<SectionProps> = ({ id, title, description, children }) => {
+    return (
+        <section id={id}>
+            <h2>{title}</h2>
+            {description && <p>{description}</p>}
+            {children}
+        </section>
+    );
+};
+
+export default Section;

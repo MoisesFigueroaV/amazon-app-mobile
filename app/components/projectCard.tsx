@@ -1,20 +1,22 @@
-'use client'; // Esta línea asegura que el componente sea del lado del cliente
+import React, { useState } from 'react';
 
 interface ProjectCardProps {
-  type: string;
-  name: string;
+  title: string;
   description: string;
-  url: string;
+  technologies: string[];
+  onClick: () => void;
 }
 
-export default function ProjectCard({ type, name, description, url }: ProjectCardProps) {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, onClick }) => {
   return (
-    <div className="project-card" onClick={() => window.open(url, "_blank")}>
-      <div className="project-card-header">
-        <span className="project-card-type">{type}</span>
+    <div className="project-card" onClick={onClick}>
+      <h3 className="project-title">{title}</h3>
+      <p className="project-description">{description}</p>
+      <div className="project-technologies">
+        {technologies.join(', ')}
       </div>
-      <h3 className="project-card-title">{name}</h3>
-      <p className="project-card-description">{description}</p>
     </div>
   );
-}
+};
+
+export default ProjectCard;

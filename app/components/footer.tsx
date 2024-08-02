@@ -7,15 +7,6 @@ export default function Footer() {
     <footer className="footer">
       <h3>Contact</h3>
       <div className="social-icons">
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram />
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter />
-        </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-          <FaGithub />
-        </a>
       </div>
       <p className="footer-text">© 2024 Moisés Figueroa</p>
     </footer>
