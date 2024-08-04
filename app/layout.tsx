@@ -1,6 +1,7 @@
 // app/layout.tsx
 import React from 'react';
 import Head from 'next/head';
+import './styles/globals.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;

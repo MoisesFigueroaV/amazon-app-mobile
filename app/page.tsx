@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
-import Header from './components/Header'; // Asegúrate de que esta ruta sea correcta
+import Header from './components/Header';
 import SocialMedia from './components/SocialMedia';
 import Section from './components/Section';
 import ProjectCard from './components/projectCard'; 
-import ProjectDetail from './components/ProjectDetails'; 
+import ProjectModal from './components/Modal'; 
 import ArticleDetail from './components/ArticlesDetails'; 
 import Footer from './components/Footer';
 import { Project } from './types/project';
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
         setSelectedProject(project);
     };
 
-    const handleCloseDetail = () => {
+    const handleCloseModal = () => {
         setSelectedProject(null);
     };
 
@@ -29,31 +29,31 @@ const HomePage: React.FC = () => {
 
     const projects: Project[] = [
         {
-          id: '1', // Asegúrate de incluir 'id'
-          title: 'Proyecto 1',
-          description: 'Descripción del Proyecto 1',
-          technologies: ['React', 'JavaScript', 'CSS'],
-          images: ['/path/to/image1.jpg'],
-          repoUrl: 'https://github.com/usuario/proyecto1',
-          tags: ['React', 'JavaScript', 'CSS'],
-          image: '/path/to/image1.jpg', // Añadir esta línea
+            id: '1',
+            title: 'Proyecto 1',
+            description: 'Descripción del Proyecto 1',
+            technologies: ['React', 'JavaScript', 'CSS'],
+            images: ['/path/to/image1.jpg'],
+            repoUrl: 'https://github.com/usuario/proyecto1',
+            tags: ['React', 'JavaScript', 'CSS'],
+            image: '/path/to/image1.jpg',
         },
         {
-          id: '2', // Asegúrate de incluir 'id'
-          title: 'Proyecto 2',
-          description: 'Descripción del Proyecto 2',
-          technologies: ['Node.js', 'Express', 'MongoDB'],
-          images: ['/path/to/image2.jpg'],
-          repoUrl: 'https://github.com/usuario/proyecto2',
-          tags: ['Node.js', 'Express', 'MongoDB'],
-          image: '/path/to/image2.jpg', // Añadir esta línea
+            id: '2',
+            title: 'Proyecto 2',
+            description: 'Descripción del Proyecto 2',
+            technologies: ['Node.js', 'Express', 'MongoDB'],
+            images: ['/path/to/image2.jpg'],
+            repoUrl: 'https://github.com/usuario/proyecto2',
+            tags: ['Node.js', 'Express', 'MongoDB'],
+            image: '/path/to/image2.jpg',
         },
         // Agrega más proyectos según sea necesario
-      ];
+    ];
 
     return (
         <div className={`container ${darkMode ? 'dark-mode' : ''}`}>
-            <Header /> {/* Asegúrate de que Header esté aquí */}
+            <Header />
             <SocialMedia />
             <main className="main-content">
                 <Section
@@ -72,13 +72,13 @@ const HomePage: React.FC = () => {
                             key={project.id}
                             title={project.title}
                             description={project.description}
-                            technologies={project.technologies}
+                            technologies={project.technologies}  // Asegúrate de pasar `technologies`
                             onClick={() => handleProjectClick(project)}
                         />
                     ))}
                 </Section>
                 {selectedProject && (
-                    <ProjectDetail project={selectedProject} onClose={handleCloseDetail} />
+                    <ProjectModal project={selectedProject} onClose={handleCloseModal} />
                 )}
                 <Section id="articles" title="Articles">
                     <ArticleDetail

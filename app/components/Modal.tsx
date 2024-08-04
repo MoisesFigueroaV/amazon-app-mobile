@@ -1,26 +1,27 @@
 import React from 'react';
+import { Project } from '../types/project';
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  description: string;
-  technologies: string[];
+interface ProjectModalProps {
+    project: Project;
+    onClose: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, description, technologies }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>X</button>
-        <h2 className="modal-title">{title}</h2>
-        <p className="modal-description">{description}</p>
-        <div className="modal-technologies">{technologies.join(', ')}</div>
-      </div>
-    </div>
-  );
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+    return (
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <button className="close-button" onClick={onClose}>×</button>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+                <p><strong>Tecnologías:</strong> {project.technologies.join(', ')}</p>
+                <div className="project-images">
+                    {project.images.map((image, index) => (
+                        <img key={index} src={image} alt={`Imagen del proyecto ${project.title}`} />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default Modal;
+export default ProjectModal;
