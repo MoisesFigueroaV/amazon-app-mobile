@@ -1,6 +1,6 @@
 // components/Articles.tsx
 import React, { useState } from 'react';
-import ArticleDetail from './articlesDetails';
+import ArticleDetail from './ArticlesDetails';
 
 const Articles: React.FC = () => {
     const [selectedArticle, setSelectedArticle] = useState<string | null>(null);

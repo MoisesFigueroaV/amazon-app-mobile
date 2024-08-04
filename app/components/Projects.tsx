@@ -12,6 +12,14 @@ interface ProjectDetailProps {
     onClose: () => void;
 }
 
+export interface Project {
+    id: string; 
+    title: string;
+    description: string;
+    technologies: string[];
+    images: string[];
+}
+
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
     if (!project) return null;
     

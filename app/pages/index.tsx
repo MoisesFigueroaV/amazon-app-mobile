@@ -1,27 +1,32 @@
 import Head from 'next/head';
 import Header from '../components/Header';
-import ArticleCard from '../components/ArticleCard';
 import ProjectCard from '../components/projectCard';
-import Section from '../components/section';
+import Section from '../components/Section';
 import Footer from '../components/Footer';
-import Tabs from '../components/tabs'; 
-import { Project } from '../components/types'; 
-
+import Tabs from '../components/Tabs'; 
+import { Project } from '../types/project'; 
+import Articles from '../components/Articles'; // Importa el componente Articles
 
 const projects: Project[] = [
   {
+    id: '1',
     title: 'Project 1',
     description: 'Descripción del proyecto 1...',
-    image: '/path/to/image1.jpg',
+    technologies: ['React', 'JavaScript', 'CSS'], // Añadir technologies
+    images: ['/path/to/image1.jpg'], // Añadir images
     repoUrl: 'https://github.com/mi-proyecto1',
     tags: ['React', 'JavaScript', 'CSS'],
+    image: '/path/to/image1.jpg', // Añadir image
   },
   {
+    id: '2',
     title: 'Project 2',
     description: 'Descripción del proyecto 2...',
-    image: '/path/to/image2.jpg',
+    technologies: ['Node.js', 'Express', 'MongoDB'], // Añadir technologies
+    images: ['/path/to/image2.jpg'], // Añadir images
     repoUrl: 'https://github.com/mi-proyecto2',
     tags: ['Node.js', 'Express', 'MongoDB'],
+    image: '/path/to/image2.jpg', // Añadir image
   },
   // Agrega más proyectos según sea necesario
 ];
@@ -42,8 +47,7 @@ export default function Home() {
           <Tabs projects={projects} /> {/* Usar el componente Tabs */}
         </Section>
         <Section id="articles" title="Articles">
-          <ArticleCard title="Artículo 1" description="Descripción del artículo..." />
-          <ArticleCard title="Artículo 2" description="Descripción del artículo..." />
+          <Articles /> {/* Usar el componente Articles */}
         </Section>
       </main>
 
