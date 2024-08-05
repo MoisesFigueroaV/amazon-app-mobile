@@ -1,28 +1,20 @@
-import React from 'react';
-
-interface Article {
-    id: string;
-    title: string;
-    content: string;
-}
-
 interface ArticleDetailProps {
-    article: Article | undefined;
+    article: {
+      id: string;
+      title: string;
+      content: string;
+    };
     onClose: () => void;
-}
-
-const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose }) => {
-    if (!article) return null;
-
+  }
+  
+  const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose }) => {
     return (
-        <div className="article-detail-overlay" onClick={onClose}>
-            <div className="article-detail-content" onClick={(e) => e.stopPropagation()}>
-                <button className="article-detail-close" onClick={onClose}>X</button>
-                <h2>{article.title}</h2>
-                <p>{article.content}</p>
-            </div>
-        </div>
+      <div>
+        <h2>{article.title}</h2>
+        <p>{article.content}</p>
+        <button onClick={onClose}>Close</button>
+      </div>
     );
-};
-
-export default ArticleDetail;
+  };
+  
+  export default ArticleDetail;

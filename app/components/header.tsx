@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import ModeToggle from './ModeToggle';  // Asegúrate de que la ruta es correcta
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';  // Asegúrate de que la ruta es correcta
 
 const Header: React.FC = () => {
   return (
@@ -20,7 +19,6 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-      <ModeToggle />
     </header>
   );
 };

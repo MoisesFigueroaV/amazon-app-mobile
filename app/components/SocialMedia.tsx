@@ -1,7 +1,6 @@
-// app/components/SocialMedia.tsx
 import React from 'react';
-import { FaInstagram, FaTwitter, FaGithub } from 'react-icons/fa';
-import { GiMac10, GiMailbox, GiMailShirt } from 'react-icons/gi';
+import { FaInstagram, FaTwitter, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { GiMac10, GiMailShirt } from 'react-icons/gi';
 import { MdEmail } from 'react-icons/md';
 
 const SocialMedia: React.FC = () => {
@@ -16,8 +15,9 @@ const SocialMedia: React.FC = () => {
             <a href="https://github.com/moises" target="_blank" rel="noopener noreferrer">
                 <FaGithub />
             </a>
-            <a href="http://" target="_bank" rel="noopener noreferrer"><GiMailbox />
-            </ a>
+            <a href="mailto:example@example.com" target="_blank" rel="noopener noreferrer">
+                <FaEnvelope />
+            </a>
         </div>
     );
 };

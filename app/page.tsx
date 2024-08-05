@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import SocialMedia from './components/SocialMedia';
 import Section from './components/Section';
@@ -9,10 +9,16 @@ import ProjectModal from './components/Modal';
 import ArticleDetail from './components/ArticlesDetails'; 
 import Footer from './components/Footer';
 import { Project } from './types/project';
+import { useTheme } from 'next-themes';
 
 const HomePage: React.FC = () => {
+    const { theme, setTheme } = useTheme();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [darkMode, setDarkMode] = useState<boolean>(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleProjectClick = (project: Project) => {
         setSelectedProject(project);
@@ -23,9 +29,10 @@ const HomePage: React.FC = () => {
     };
 
     const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-        document.body.classList.toggle('dark-mode', !darkMode);
+        setTheme(theme === 'light' ? 'dark' : 'light');
     };
+
+    if (!mounted) return null;
 
     const projects: Project[] = [
         {
@@ -48,11 +55,10 @@ const HomePage: React.FC = () => {
             tags: ['Node.js', 'Express', 'MongoDB'],
             image: '/path/to/image2.jpg',
         },
-        // Agrega más proyectos según sea necesario
     ];
 
     return (
-        <div className={`container ${darkMode ? 'dark-mode' : ''}`}>
+        <div className={`container ${theme === 'dark' ? 'dark-mode' : ''}`}>
             <Header />
             <SocialMedia />
             <main className="main-content">
@@ -72,7 +78,7 @@ const HomePage: React.FC = () => {
                             key={project.id}
                             title={project.title}
                             description={project.description}
-                            technologies={project.technologies}  // Asegúrate de pasar `technologies`
+                            technologies={project.technologies}
                             onClick={() => handleProjectClick(project)}
                         />
                     ))}
@@ -89,7 +95,6 @@ const HomePage: React.FC = () => {
                         article={{ id: '2', title: 'Artículo 2', content: 'Descripción del artículo 2...' }}
                         onClose={() => {}}
                     />
-                    {/* Agrega más artículos según sea necesario */}
                 </Section>
             </main>
             <Footer />
