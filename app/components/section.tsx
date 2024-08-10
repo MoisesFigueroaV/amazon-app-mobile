@@ -4,15 +4,17 @@ import React from 'react';
 interface SectionProps {
     id: string;
     title: string;
-    description?: string;
+    description?: string; // Hacer que description sea opcional
+    titleClassName?: string;
+    descriptionClassName?: string;
     children?: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ id, title, description, children }) => {
+const Section: React.FC<SectionProps> = ({ id, title, description, titleClassName, descriptionClassName, children }) => {
     return (
-        <section id={id}>
-            <h2>{title}</h2>
-            {description && <p>{description}</p>}
+        <section id={id} className="section">
+            <h2 className={titleClassName}>{title}</h2>
+            {description && <p className={descriptionClassName}>{description}</p>}
             {children}
         </section>
     );

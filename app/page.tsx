@@ -62,17 +62,21 @@ const HomePage: React.FC = () => {
             <Header />
             <SocialMedia />
             <main className="main-content">
-                <Section
+                <Section 
                     id="about-me"
                     title="About Me"
                     description="Soy Moises Figueroa, tengo 26 años y soy estudiante de ingeniería en informática."
+                    titleClassName="section-title"
+                    descriptionClassName="section-description"
                 />
-                <Section
+                <Section 
                     id="skills"
                     title="Skills"
                     description="Mis tecnologías y herramientas que sé utilizar son las siguientes:"
+                    titleClassName="section-title"
+                    descriptionClassName="section-description"
                 />
-                <Section id="projects" title="Projects">
+                <Section id="projects" title="Projects" titleClassName="section-title">
                     {projects.map((project) => (
                         <ProjectCard
                             key={project.id}
@@ -80,20 +84,26 @@ const HomePage: React.FC = () => {
                             description={project.description}
                             technologies={project.technologies}
                             onClick={() => handleProjectClick(project)}
+                            titleClassName="project-card-title"
+                            descriptionClassName="project-card-description"
                         />
                     ))}
                 </Section>
                 {selectedProject && (
                     <ProjectModal project={selectedProject} onClose={handleCloseModal} />
                 )}
-                <Section id="articles" title="Articles">
+                <Section id="articles" title="Articles" titleClassName="section-title">
                     <ArticleDetail
                         article={{ id: '1', title: 'Artículo 1', content: 'Descripción del artículo 1...' }}
                         onClose={() => {}}
+                        titleClassName="article-title"
+                        contentClassName="article-content"
                     />
                     <ArticleDetail
                         article={{ id: '2', title: 'Artículo 2', content: 'Descripción del artículo 2...' }}
                         onClose={() => {}}
+                        titleClassName="article-title"
+                        contentClassName="article-content"
                     />
                 </Section>
             </main>

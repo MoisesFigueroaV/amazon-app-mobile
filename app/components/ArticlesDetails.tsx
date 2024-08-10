@@ -1,20 +1,24 @@
+import React from 'react';
+
 interface ArticleDetailProps {
     article: {
-      id: string;
-      title: string;
-      content: string;
+        id: string;
+        title: string;
+        content: string;
     };
     onClose: () => void;
-  }
-  
-  const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose }) => {
+    titleClassName?: string;
+    contentClassName?: string;
+}
+
+const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, onClose, titleClassName, contentClassName }) => {
     return (
-      <div>
-        <h2>{article.title}</h2>
-        <p>{article.content}</p>
-        <button onClick={onClose}>Close</button>
-      </div>
+        <div className="article-detail">
+            <h3 className={titleClassName}>{article.title}</h3>
+            <p className={contentClassName}>{article.content}</p>
+            <button onClick={onClose}>Close</button>
+        </div>
     );
-  };
-  
-  export default ArticleDetail;
+};
+
+export default ArticleDetail;

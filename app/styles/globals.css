@@ -233,3 +233,63 @@ body {
   z-index: 1000; 
 }
 
+/*Tipografias y fuentes*/
+
+/* Example CSS */
+  /* app/styles/globals.css */
+.header-tittle {
+  margin-right: 2rem;
+  font-weight: 700;
+}
+
+.profile-name {
+  font-size: 2rem; 
+  font-weight: bold; 
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.icon-location {
+  margin-right: 0.5rem;
+}
+
+.location-text {
+  font-size: 1rem; 
+  color: gray; 
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+.project-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.project-card-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+.article-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.article-content {
+  font-size: 1rem;
+  color: #666;
+}

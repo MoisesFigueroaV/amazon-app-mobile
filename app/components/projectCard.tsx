@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ProjectCardProps {
-  title: string;
-  description: string;
-  technologies: string[];
-  onClick: () => void;
+    title: string;
+    description: string;
+    technologies: string[];
+    onClick: () => void;
+    titleClassName?: string;
+    descriptionClassName?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, onClick }) => {
-  return (
-    <div className="project-card" onClick={onClick}>
-      <h3 className="project-title">{title}</h3>
-      <p className="project-description">{description}</p>
-      <div className="project-technologies">
-        {technologies.join(', ')}
-      </div>
-    </div>
-  );
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, onClick, titleClassName, descriptionClassName }) => {
+    return (
+        <div className="project-card" onClick={onClick}>
+            <h3 className={titleClassName}>{title}</h3>
+            <p className={descriptionClassName}>{description}</p>
+            <ul>
+                {technologies.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                ))}
+            </ul>
+        </div>
+    );
 };
 
 export default ProjectCard;
