@@ -41,7 +41,7 @@ export default function Component() {
           <div className="container mx-auto flex flex-col items-center gap-6 px-4 md:flex-row md:gap-12">
             <div className="flex-1">
               <Image
-                src=""
+                src="https://res.cloudinary.com/dqov04wqn/image/upload/f_auto,q_auto/v1/Mis%20Archivos/dvwkbwhi0cxacehp3vwg"
                 width={300}
                 height={300}
                 alt="Profile"
@@ -230,6 +230,25 @@ export default function Component() {
               Here you can add more details about the project, such as technologies used, challenges faced, and
               achievements.
             </p>
+            <p className="mt-2 text-muted-foreground">
+                Tecnologic Using: React, Node.js, MongoDB.
+            </p>
+            <Image
+                src=""
+                width={300}
+                height={300}
+                alt="Profile"
+                className="mx-auto h-48 w-48 object-cover md:h-64 md:w-64"
+              />
+              <div className="mt-4 flex space-x-4">
+                <a
+                  href="https://github.com/repo-link"
+                  className="inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                > See Repository
+                </a>
+              </div>
             <a
               href="#"
               className="mt-4 inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
