@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { FaLinkedin, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
 import '../app/styles/globals.css';
 
 export default function Component() {
@@ -20,16 +21,16 @@ export default function Component() {
             Portfolio
           </Link>
           <nav className="flex items-center gap-4">
-            <Link href="#" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link href="#home" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
               Home
             </Link>
-            <Link href="#" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link href="#about" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
               About
             </Link>
-            <Link href="#" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link href="#projects" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
               Projects
             </Link>
-            <Link href="#" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link href="#contact" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
               Contact
             </Link>
           </nav>
@@ -63,7 +64,7 @@ export default function Component() {
                   Download CV
                 </Link>
                 <Link
-                  href="#"
+                  href="#contact"
                   className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                   prefetch={false}
                 >
@@ -206,11 +207,25 @@ export default function Component() {
         </section>
       </main>
 
-      <footer className="bg-muted py-4">
-        <div className="container mx-auto text-center text-sm text-muted-foreground">
-          &copy; 2023 Moises Figueroa. All rights reserved.
-        </div>
-      </footer>
+          <footer className="bg-muted py-4">
+            <div className="container mx-auto text-center text-sm text-muted-foreground">
+              <div className="flex justify-center space-x-4 mb-2">
+                <a href="http://www.linkedin.com/in/moises-figueroa-valenzuela-444954221" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin size={24} />
+                </a>
+                <a href="https://x.com/MoisFiDeveloper" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter size={24} />
+                </a>
+                <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram size={24} />
+                </a>
+                <a href="https://github.com/MoisesFigueroaDeveloper" target="_blank" rel="noopener noreferrer">
+                  <FaGithub size={24} />
+                </a>
+              </div>
+              <div>&copy; 2023 Moises Figueroa. All rights reserved.</div>
+            </div>
+          </footer>
 
       {/* Modal */}
       {isModalOpen && (
@@ -242,11 +257,11 @@ export default function Component() {
               />
               <div className="mt-4 flex space-x-4">
                 <a
-                  href="https://github.com/repo-link"
+                  href="#"
                   className="inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
                   target="_blank"
                   rel="noopener noreferrer"
-                > See Repository
+                > View Repository
                 </a>
               </div>
             <a
