@@ -9,9 +9,41 @@ import '../app/styles/globals.css';
 
 export default function Component() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState<{ name: string; email: string; message: string }>({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'loading' | 'success' | 'error' | null>(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/sendEmail/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -162,7 +194,7 @@ export default function Component() {
         <section id="contact" className="bg-muted py-12 md:py-20">
           <div className="container mx-auto px-4">
             <h2 className="mb-8 text-2xl font-bold text-foreground">Contact Me</h2>
-            <form className="mx-auto max-w-md space-y-4">
+            <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-4">
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
                   Name
@@ -171,6 +203,8 @@ export default function Component() {
                   id="name"
                   type="text"
                   placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
@@ -182,6 +216,8 @@ export default function Component() {
                   id="email"
                   type="email"
                   placeholder="Your email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
@@ -193,6 +229,8 @@ export default function Component() {
                   id="message"
                   rows={4}
                   placeholder="Your message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
@@ -200,32 +238,34 @@ export default function Component() {
                 type="submit"
                 className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
-                Send Message
+                {status === 'loading' ? 'Sending...' : 'Send Message'}
               </Button>
+              {status === 'success' && <p className="text-green-500">Message sent successfully!</p>}
+              {status === 'error' && <p className="text-red-500">An error occurred. Please try again.</p>}
             </form>
           </div>
         </section>
       </main>
 
-          <footer className="bg-muted py-4">
-            <div className="container mx-auto text-center text-sm text-muted-foreground">
-              <div className="flex justify-center space-x-4 mb-2">
-                <a href="http://www.linkedin.com/in/moises-figueroa-valenzuela-444954221" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin size={24} />
-                </a>
-                <a href="https://x.com/MoisFiDeveloper" target="_blank" rel="noopener noreferrer">
-                  <FaTwitter size={24} />
-                </a>
-                <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer">
-                  <FaInstagram size={24} />
-                </a>
-                <a href="https://github.com/MoisesFigueroaDeveloper" target="_blank" rel="noopener noreferrer">
-                  <FaGithub size={24} />
-                </a>
-              </div>
-              <div>&copy; 2023 Moises Figueroa. All rights reserved.</div>
-            </div>
-          </footer>
+      <footer className="bg-muted py-4">
+        <div className="container mx-auto text-center text-sm text-muted-foreground">
+          <div className="flex justify-center space-x-4 mb-2">
+            <a href="http://www.linkedin.com/in/moises-figueroa-valenzuela-444954221" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="https://x.com/MoisFiDeveloper" target="_blank" rel="noopener noreferrer">
+              <FaTwitter size={24} />
+            </a>
+            <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+              <FaInstagram size={24} />
+            </a>
+            <a href="https://github.com/MoisesFigueroaDeveloper" target="_blank" rel="noopener noreferrer">
+              <FaGithub size={24} />
+            </a>
+          </div>
+          <div>&copy; 2023 Moises Figueroa. All rights reserved.</div>
+        </div>
+      </footer>
 
       {/* Modal */}
       {isModalOpen && (
@@ -246,24 +286,25 @@ export default function Component() {
               achievements.
             </p>
             <p className="mt-2 text-muted-foreground">
-                Tecnologic Using: React, Node.js, MongoDB.
+              Tecnologic Using: React, Node.js, MongoDB.
             </p>
             <Image
-                src=""
-                width={300}
-                height={300}
-                alt="Profile"
-                className="mx-auto h-48 w-48 object-cover md:h-64 md:w-64"
-              />
-              <div className="mt-4 flex space-x-4">
-                <a
-                  href="#"
-                  className="inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                > View Repository
-                </a>
-              </div>
+              src=""
+              width={300}
+              height={300}
+              alt="Profile"
+              className="mx-auto h-48 w-48 object-cover md:h-64 md:w-64"
+            />
+            <div className="mt-4 flex space-x-4">
+              <a
+                href="#"
+                className="inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Repository
+              </a>
+            </div>
             <a
               href="#"
               className="mt-4 inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
