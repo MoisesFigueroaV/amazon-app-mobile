@@ -1,47 +1,55 @@
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { FaLinkedin, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
-import '../app/styles/globals.css';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { FaLinkedin, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
+import "../app/styles/globals.css";
 
 export default function Component() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState<{ name: string; email: string; message: string }>({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'loading' | 'success' | 'error' | null>(null);
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    message: string;
+  }>({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"loading" | "success" | "error" | null>(
+    null,
+  );
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [id]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('loading');
+    setStatus("loading");
 
     try {
-      const response = await fetch('/api/sendEmail/sendEmail', {
-        method: 'POST',
+      const response = await fetch("/api/sendEmail/sendEmail", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch (error) {
       console.error(error);
-      setStatus('error');
+      setStatus("error");
     }
   };
 
@@ -49,20 +57,40 @@ export default function Component() {
     <div className="flex flex-col min-h-screen">
       <header className="fixed top-0 left-0 right-0 z-10 bg-background px-4 py-3 shadow-sm">
         <div className="container mx-auto flex items-center justify-between">
-          <Link href="#" className="text-xl font-bold text-foreground" prefetch={false}>
+          <Link
+            href="#"
+            className="text-xl font-bold text-foreground"
+            prefetch={false}
+          >
             Portfolio
           </Link>
           <nav className="flex items-center gap-4">
-            <Link href="#home" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link
+              href="#home"
+              className="text-sm font-medium text-foreground hover:underline"
+              prefetch={false}
+            >
               Home
             </Link>
-            <Link href="#about" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link
+              href="#about"
+              className="text-sm font-medium text-foreground hover:underline"
+              prefetch={false}
+            >
               About
             </Link>
-            <Link href="#projects" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link
+              href="#projects"
+              className="text-sm font-medium text-foreground hover:underline"
+              prefetch={false}
+            >
               Projects
             </Link>
-            <Link href="#contact" className="text-sm font-medium text-foreground hover:underline" prefetch={false}>
+            <Link
+              href="#contact"
+              className="text-sm font-medium text-foreground hover:underline"
+              prefetch={false}
+            >
               Contact
             </Link>
           </nav>
@@ -82,10 +110,13 @@ export default function Component() {
               />
             </div>
             <div className="flex-1 space-y-4 text-center md:text-left">
-              <h1 className="text-3xl font-bold text-foreground">Moises Figueroa</h1>
+              <h1 className="text-3xl font-bold text-foreground">
+                Moises Figueroa
+              </h1>
               <p className="text-muted-foreground">Software Engineer</p>
               <p className="text-muted-foreground">
-                I'm a passionate web developer with expertise in creating modern and responsive web applications.
+                I'm a passionate web developer with expertise in creating modern
+                and responsive web applications.
               </p>
               <div className="flex justify-center gap-4 md:justify-start">
                 <Link
@@ -111,17 +142,25 @@ export default function Component() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div>
-                <h2 className="mb-4 text-2xl font-bold text-foreground">About Me</h2>
+                <h2 className="mb-4 text-2xl font-bold text-foreground">
+                  About Me
+                </h2>
                 <p className="text-muted-foreground">
-                  I am a full-stack developer with a passion for creating beautiful and functional web applications. I
-                  have experience in a variety of technologies, including React, Node.js, and MongoDB.
+                  I am a full-stack developer with a passion for creating
+                  beautiful and functional web applications. I have experience
+                  in a variety of technologies, including React, Node.js, and
+                  MongoDB.
                 </p>
               </div>
               <div>
-                <h2 className="mb-4 text-2xl font-bold text-foreground">Skills</h2>
+                <h2 className="mb-4 text-2xl font-bold text-foreground">
+                  Skills
+                </h2>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-md bg-background p-4 shadow-sm">
-                    <h3 className="mb-2 text-lg font-medium text-foreground">Front-End</h3>
+                    <h3 className="mb-2 text-lg font-medium text-foreground">
+                      Front-End
+                    </h3>
                     <ul className="space-y-2 text-muted-foreground">
                       <li>React</li>
                       <li>HTML/CSS</li>
@@ -130,7 +169,9 @@ export default function Component() {
                     </ul>
                   </div>
                   <div className="rounded-md bg-background p-4 shadow-sm">
-                    <h3 className="mb-2 text-lg font-medium text-foreground">Back-End</h3>
+                    <h3 className="mb-2 text-lg font-medium text-foreground">
+                      Back-End
+                    </h3>
                     <ul className="space-y-2 text-muted-foreground">
                       <li>Node.js</li>
                       <li>Express</li>
@@ -139,7 +180,9 @@ export default function Component() {
                     </ul>
                   </div>
                   <div className="rounded-md bg-background p-4 shadow-sm">
-                    <h3 className="mb-2 text-lg font-medium text-foreground">Tools</h3>
+                    <h3 className="mb-2 text-lg font-medium text-foreground">
+                      Tools
+                    </h3>
                     <ul className="space-y-2 text-muted-foreground">
                       <li>Git</li>
                       <li>GitHub</li>
@@ -148,7 +191,9 @@ export default function Component() {
                     </ul>
                   </div>
                   <div className="rounded-md bg-background p-4 shadow-sm">
-                    <h3 className="mb-2 text-lg font-medium text-foreground">Other</h3>
+                    <h3 className="mb-2 text-lg font-medium text-foreground">
+                      Other
+                    </h3>
                     <ul className="space-y-2 text-muted-foreground">
                       <li>Agile Methodologies</li>
                       <li>Responsive Design</li>
@@ -164,7 +209,9 @@ export default function Component() {
 
         <section id="projects" className="bg-background py-12 md:py-20">
           <div className="container mx-auto px-4">
-            <h2 className="mb-8 text-2xl font-bold text-foreground">My Projects</h2>
+            <h2 className="mb-8 text-2xl font-bold text-foreground">
+              My Projects
+            </h2>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <div className="rounded-md bg-muted p-4 shadow-sm">
                 <Image
@@ -175,8 +222,12 @@ export default function Component() {
                   className="mb-4 h-48 w-full rounded-md object-cover"
                   style={{ aspectRatio: "400/300", objectFit: "cover" }}
                 />
-                <h3 className="mb-2 text-lg font-medium text-foreground">Project 1</h3>
-                <p className="text-muted-foreground">A web application built with React, Node.js, and MongoDB.</p>
+                <h3 className="mb-2 text-lg font-medium text-foreground">
+                  Project 1
+                </h3>
+                <p className="text-muted-foreground">
+                  A web application built with React, Node.js, and MongoDB.
+                </p>
                 <div className="mt-4 flex justify-end">
                   <button
                     onClick={openModal}
@@ -193,10 +244,18 @@ export default function Component() {
 
         <section id="contact" className="bg-muted py-12 md:py-20">
           <div className="container mx-auto px-4">
-            <h2 className="mb-8 text-2xl font-bold text-foreground">Contact Me</h2>
-            <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-4">
+            <h2 className="mb-8 text-2xl font-bold text-foreground">
+              Contact Me
+            </h2>
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto max-w-md space-y-4"
+            >
               <div>
-                <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm font-medium text-foreground"
+                >
                   Name
                 </label>
                 <Input
@@ -209,7 +268,10 @@ export default function Component() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm font-medium text-foreground"
+                >
                   Email
                 </label>
                 <Input
@@ -222,7 +284,10 @@ export default function Component() {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-sm font-medium text-foreground"
+                >
                   Message
                 </label>
                 <Textarea
@@ -238,40 +303,73 @@ export default function Component() {
                 type="submit"
                 className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
-                {status === 'loading' ? 'Sending...' : 'Send Message'}
+                {status === "loading" ? "Sending..." : "Send Message"}
               </Button>
-              {status === 'success' && <p className="text-green-500">Message sent successfully!</p>}
-              {status === 'error' && <p className="text-red-500">An error occurred. Please try again.</p>}
+              {status === "success" && (
+                <p className="text-green-500">Message sent successfully!</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-500">
+                  An error occurred. Please try again.
+                </p>
+              )}
             </form>
           </div>
         </section>
       </main>
 
-      <footer className="bg-muted py-4">
+      <footer className="bg-muted py-6">
         <div className="container mx-auto text-center text-sm text-muted-foreground">
-          <div className="flex justify-center space-x-4 mb-2">
-            <a href="http://www.linkedin.com/in/moises-figueroa-valenzuela-444954221" target="_blank" rel="noopener noreferrer">
+          {/* Añadido margen inferior para dar espacio con el contenido superior */}
+          <div className="flex justify-center space-x-4 mb-4">
+            <a
+              href="http://www.linkedin.com/in/moises-figueroa-valenzuela-444954221"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
               <FaLinkedin size={24} />
             </a>
-            <a href="https://x.com/MoisFiDeveloper" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://x.com/MoisFiDeveloper"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
               <FaTwitter size={24} />
             </a>
-            <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/tu-usuario"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
               <FaInstagram size={24} />
             </a>
-            <a href="https://github.com/MoisesFigueroaDeveloper" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/MoisesFigueroaDeveloper"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
               <FaGithub size={24} />
             </a>
           </div>
-          <div>&copy; 2023 Moises Figueroa. All rights reserved.</div>
+          {/* Añadido margen superior para separar el texto de los iconos */}
+          <div className="mt-4">
+            &copy; 2023 Moises Figueroa. All rights reserved.
+          </div>
         </div>
       </footer>
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50" onClick={closeModal}>
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black/50"
+          onClick={closeModal}
+        >
           <div
-            className="bg-white p-8 rounded-md shadow-lg relative"
+            className="bg-white p-8 rounded-md shadow-lg relative unfold" // Añade la clase `unfold` aquí
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -280,10 +378,12 @@ export default function Component() {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold text-foreground">Project 1 Details</h2>
+            <h2 className="text-2xl font-bold text-foreground">
+              Project 1 Details
+            </h2>
             <p className="mt-4 text-muted-foreground">
-              Here you can add more details about the project, such as technologies used, challenges faced, and
-              achievements.
+              Here you can add more details about the project, such as
+              technologies used, challenges faced, and achievements.
             </p>
             <p className="mt-2 text-muted-foreground">
               Tecnologic Using: React, Node.js, MongoDB.
