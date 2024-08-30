@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio
+Welcome to my personal portfolio. Here, you can explore my skills, projects, and experience in software development.
+This portfolio is designed to showcase my work and provide information on how you can get in touch with me.
 
-## Getting Started
+## Table of Contents
+1. [Project Description]
+2. [Features]
+3. [Technologies Used]
+4. [Installation and Setup]
+5. [Usage]
+6. [Project Structure]
+7. [Contributions]
+8. [License]
+9. [Contact]
 
-First, run the development server:
+## Project Description
+This is a personal portfolio created to highlight my skills in web development. The site features an introduction
+about me, a section showcasing my highlighted projects, and a simple way to contact me.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+N/A
+
+## Technologies Used
+- **Next.js**: For server-side rendering and static page generation.
+- **TypeScript**: For improved type safety and scalability of code.
+- **Tailwind CSS**: For styling and responsive design.
+
+## Installation and Setup
+
+To run this portfolio locally, follow these steps:
+
+1. Clone the repository:
+
+  ```zsh
+  git clone https**://github.com/your-username/your-portfolio.git
+  ```
+
+2. Navigate to the project directory:
+
+  ```zsh
+  cd mi-portafolio-web
+  ```
+
+3.Install the dependencies:
+
+```zsh
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  ```zsh
+  npm run dev
+  ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+5. Open your browser and visit http://localhost:3000 to view the portfolio in action.
 
-## Learn More
+## Usage
+Navigate through the sections of the site to learn about my experience, explore my projects, and get in touch with me.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
+- **`/components`**: Contains reusable React components.
+- **`/pages`**: Contains the site pages.
+- **`/public`*: Contains static files like images.
+- **`/styles`*: Contains global styles.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions
+If you would like to contribute to this project, please open an issue or a pull request on the GitHub repository. I welcome suggestions and improvements.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
+This project is licensed under the [MIT](License).
 
-## Deploy on Vercel
+## Contact
+You can reach me through:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Email**: moises.figueroavalenzuela@gmail.com
+**LinkedIn**: Moises Figueroa Valenzuela
+**GitHub**: moisesfigueroadeveloper
