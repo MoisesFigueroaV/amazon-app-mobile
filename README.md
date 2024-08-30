@@ -3,15 +3,15 @@ Welcome to my personal portfolio. Here, you can explore my skills, projects, and
 This portfolio is designed to showcase my work and provide information on how you can get in touch with me.
 
 ## Table of Contents
-1. [Project Description]
-2. [Features]
-3. [Technologies Used]
-4. [Installation and Setup]
-5. [Usage]
-6. [Project Structure]
-7. [Contributions]
-8. [License]
-9. [Contact]
+1. [Project Description](#project-description)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Installation and Setup](#installation-and-setup)
+5. [Usage](#usage)
+6. [Project Structure](#project-structure)
+7. [Contributions](#contributions)
+8. [License](#license)
+9. [Contact](#contact)
 
 ## Project Description
 This is a personal portfolio created to highlight my skills in web development. The site features an introduction
@@ -74,6 +74,6 @@ This project is licensed under the [MIT](License).
 ## Contact
 You can reach me through:
 
-**Email**: moises.figueroavalenzuela@gmail.com
-**LinkedIn**: Moises Figueroa Valenzuela
-**GitHub**: moisesfigueroadeveloper
+- **Email**: moises.figueroavalenzuela@gmail.com
+- **LinkedIn**: Moises Figueroa Valenzuela
+- **GitHub**: moisesfigueroadeveloper
