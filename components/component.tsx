@@ -30,26 +30,25 @@ export default function Component() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("loading");
 
     try {
-      const response = await fetch("/api/sendEmail/sendEmail", {
+      const response = await fetch("/api/sendEmail", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        setStatus("success");
+        alert("Message sent successfully.");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setStatus("error");
+        alert(`Error: ${result.error || "Failed to send message."}`);
       }
     } catch (error) {
-      console.error(error);
-      setStatus("error");
+      console.error("Error:", error);
+      alert("Error occurred while sending the message.");
     }
   };
 
@@ -242,15 +241,22 @@ export default function Component() {
           </div>
         </section>
 
+        {/* Contact */}
         <section id="contact" className="bg-muted py-12 md:py-20">
           <div className="container mx-auto px-4">
             <h2 className="mb-8 text-2xl font-bold text-foreground">
               Contact Me
             </h2>
             <form
+              action="https://formsubmit.co/e3e17f72ef87fb4fb21ab1c17ee2c7d9"
+              method="POST"
               onSubmit={handleSubmit}
               className="mx-auto max-w-md space-y-4"
             >
+              {/* Hidden Inputs */}
+              <Input type="hidden" name="name" value="http://localhost:3000" />
+              <Input type="hidden" name="_captcha" value="false" />
+
               <div>
                 <label
                   htmlFor="name"
@@ -262,8 +268,6 @@ export default function Component() {
                   id="name"
                   type="text"
                   placeholder="Your name"
-                  value={formData.name}
-                  onChange={handleChange}
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
@@ -278,8 +282,6 @@ export default function Component() {
                   id="email"
                   type="email"
                   placeholder="Your email"
-                  value={formData.email}
-                  onChange={handleChange}
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>
@@ -294,8 +296,6 @@ export default function Component() {
                   id="message"
                   rows={4}
                   placeholder="Your message"
-                  value={formData.message}
-                  onChange={handleChange}
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
               </div>

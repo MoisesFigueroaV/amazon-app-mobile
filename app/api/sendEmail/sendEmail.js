@@ -1,38 +1,56 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
+import validator from "validator";
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const { name, email, message } = req.body;
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
 
-    // Configura el transporte de correo usando tu cuenta de email
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+  const { name, email, message } = req.body;
 
-    // Configura el correo
-    const mailOptions = {
-      from: email,
-      to: 'tu-correo-personal@ejemplo.com', // Cambia esto a tu correo personal
-      subject: `Nuevo mensaje de ${name}`,
-      text: message,
-      html: `<p>Has recibido un nuevo mensaje de contacto desde tu sitio web.</p>
-             <p><strong>Nombre: </strong> ${name}</p>
-             <p><strong>Email: </strong> ${email}</p>
-             <p><strong>Mensaje: </strong></p>
-             <p>${message}</p>`,
-    };
+  // Validar campos obligatorios
+  if (!name || !email || !message) {
+    return res
+      .status(400)
+      .json({ success: false, error: "All fields are required" });
+  }
 
-    try {
-      await transporter.sendMail(mailOptions);
-      res.status(200).json({ success: true });
-    } catch (error) {
-      res.status(500).json({ error: 'Error al enviar el mensaje' });
-    }
-  } else {
-    res.status(405).json({ message: 'Only POST requests are allowed' });
+  // Validar el correo electrónico
+  if (!validator.isEmail(email)) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Invalid email address" });
+  }
+
+  // Configurar el transporte de correo electrónico
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      type: "OAuth2",
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
+      clientId: process.env.OAUTH_CLIENT_ID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+    },
+  });
+
+  // Configurar opciones del correo
+  const mailOptions = {
+    from: `"${name}" <${email}>`, // El nombre y correo del remitente
+    to: process.env.RECEIVER_EMAIL, // Tu correo receptor
+    subject: `Message from ${name}`, // Asunto del correo
+    text: `Message: ${message}\n\nContact Email: ${email}`, // Cuerpo del correo
+  };
+
+  try {
+    // Enviar el correo
+    await transporter.sendMail(mailOptions);
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to send email." });
   }
 }
