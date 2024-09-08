@@ -250,11 +250,10 @@ export default function Component() {
             <form
               action="https://formsubmit.co/e3e17f72ef87fb4fb21ab1c17ee2c7d9"
               method="POST"
-              onSubmit={handleSubmit}
               className="mx-auto max-w-md space-y-4"
             >
               {/* Hidden Inputs */}
-              <Input type="hidden" name="name" value="http://localhost:3000" />
+              <Input type="hidden" name="_next" value="http://localhost:3000" />
               <Input type="hidden" name="_captcha" value="false" />
 
               <div>
@@ -267,8 +266,10 @@ export default function Component() {
                 <Input
                   id="name"
                   type="text"
+                  name="name" // Añadir el name al input
                   placeholder="Your name"
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  required
                 />
               </div>
               <div>
@@ -281,8 +282,10 @@ export default function Component() {
                 <Input
                   id="email"
                   type="email"
+                  name="email"
                   placeholder="Your email"
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  required
                 />
               </div>
               <div>
@@ -294,25 +297,19 @@ export default function Component() {
                 </label>
                 <Textarea
                   id="message"
+                  name="message" // Añadir el name al textarea
                   rows={4}
                   placeholder="Your message"
                   className="w-full rounded-md border border-input bg-background p-2 text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  required
                 />
               </div>
               <Button
                 type="submit"
                 className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
-                {status === "loading" ? "Sending..." : "Send Message"}
+                Send Message
               </Button>
-              {status === "success" && (
-                <p className="text-green-500">Message sent successfully!</p>
-              )}
-              {status === "error" && (
-                <p className="text-red-500">
-                  An error occurred. Please try again.
-                </p>
-              )}
             </form>
           </div>
         </section>
