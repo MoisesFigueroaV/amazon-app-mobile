@@ -50,6 +50,58 @@ html {
     }
 }
 
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas fijas */
+    gap: 16px; /* Espacio entre tarjetas */
+    max-width: 1200px; /* Ancho máximo del grid */
+    margin: 0 auto; /* Centrar contenido */
+  }
+  
+  .project-card {
+    background: var(--muted-bg, #f5f5f5);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-4px); /* Eleva ligeramente en hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid var(--foreground, #ccc);
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 12px 0;
+    color: var(--foreground, #333);
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+    color: var(--muted-foreground, #666);
+    margin-bottom: 16px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+  
+  
+
 @keyframes unfold {
     0% {
         transform: scale(0.7);

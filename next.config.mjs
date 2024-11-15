@@ -2,7 +2,7 @@ import { resolve } from "path"; // Importa la función resolve desde el módulo 
 
 export default {
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", 'via.placeholder.com'],
   },
   webpack: (config) => {
     config.resolve.alias = {

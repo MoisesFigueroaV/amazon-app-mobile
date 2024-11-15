@@ -1,7 +1,7 @@
 // page.tsx
 "use client";
 
-import Component from '../components/component'; // Nota el uso de importación por defecto
+import Component from '../components/component';
 
 export default function HomePage() {
   return (
